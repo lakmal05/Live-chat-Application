@@ -56,7 +56,7 @@ public class serverFormController {
 }
 
 
-private static class ServerThread implements  Runnable{
+ class ServerThread implements  Runnable{
     serverFormController server=null;
     Socket client;
     BufferedReader cin;
@@ -76,6 +76,7 @@ private static class ServerThread implements  Runnable{
 
     }
 
+    @Override
     public void run(){
         int x=1;
         try{

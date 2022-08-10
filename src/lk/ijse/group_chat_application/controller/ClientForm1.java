@@ -17,7 +17,8 @@ public class ClientForm1 {
     public JFXTextField txtTextField;
 
 public static void main(String args[]) throws IOException {
-    ServerSocket ss =new ServerSocket(8000);
+    Socket so=new Socket("localhost",8000);
+    ServerSocket ss =new ServerSocket(5000);
     Socket sk =ss .accept();
     BufferedReader cin = new BufferedReader(new InputStreamReader(sk.getInputStream()));
     PrintStream cout= new PrintStream(sk.getOutputStream());
@@ -27,10 +28,28 @@ public static void main(String args[]) throws IOException {
     while(true){
 
 
+            s=cin.readLine();
+            if(s.equalsIgnoreCase("bye")){
+                cout.println("BYE");
+
+                System.out.println("END");
+                break;
+            }
+            cout.println(s);
+
+
+
+        }
+    ss.close();
+    sk.close();
+    cin.close();
+    cout.close();
+    stdin.close();
+
     }
 
 
-}
+
 
     public void sendOnAction(ActionEvent actionEvent) {
     }
