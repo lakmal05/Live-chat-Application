@@ -29,6 +29,35 @@ public class ClientHandler implements Runnable {
     @Override
     public void run() {
  String massageFormClient;
- 
+
+ while(socket.isConnected()){
+     try{
+         massageFormClient=bufferedReader.readLine();
+         broadcastMassage(messageFormClient);
+     }catch(IOException e){
+         cloaseEverything(socket,bufferedReader,bufferedWriter);
+         break;
+     }
+ }
+
     }
+
+    public void broadcastMassage(String massageToSend){
+        for(ClientHandler clientHandler : clientHandlers){
+            try{
+                if(!clientHandler.clientUsername.equals(clientUsername)){
+                    clientHandler.bufferedWriter.write(massageToSend);
+                   clientHandler.bufferedWriter.newLine();
+                 clientHandler.bufferedWriter.flush();
+                }
+            }catch (IOException e){
+                closeEverything(socket,bufferedReader,bufferedWriter);
+            }
+        }
+    }
+
+public void removeClientHandler(){
+        
+}
+
 }
