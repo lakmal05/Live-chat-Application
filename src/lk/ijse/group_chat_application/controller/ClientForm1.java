@@ -16,41 +16,15 @@ public class ClientForm1 {
     public TextArea txtTextArea;
     public JFXTextField txtTextField;
 
-public static void main(String args[]) throws IOException {
-    Socket so=new Socket("localhost",8000);
-    ServerSocket ss =new ServerSocket(2000);
-    Socket sk =ss .accept();
-    BufferedReader cin = new BufferedReader(new InputStreamReader(sk.getInputStream()));
-    PrintStream cout= new PrintStream(sk.getOutputStream());
-    BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in)) ;
-    String s;
-    Scanner sc = new Scanner(System.in);
-    while(true){
-
-
-            s=cin.readLine();
-            if(s.equalsIgnoreCase("bye")){
-                cout.println("BYE");
-
-                System.out.println("END");
-                break;
-            }
-            cout.println(s);
+    public static void main(String args[]) throws IOException {
 
 
 
+
+
+
+
+        public void sendOnAction (ActionEvent actionEvent){
         }
-    ss.close();
-    sk.close();
-    cin.close();
-    cout.close();
-    stdin.close();
-
-    }
-
-
-
-
-    public void sendOnAction(ActionEvent actionEvent) {
     }
 }
