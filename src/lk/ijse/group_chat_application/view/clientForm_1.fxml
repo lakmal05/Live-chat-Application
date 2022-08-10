@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.group_chat_application.controller.ClientForm1">
+   <children>
+      <Label layoutX="32.0" layoutY="22.0" prefHeight="17.0" prefWidth="96.0" text="Client 1" />
+      <TextArea fx:id="txtTextArea" layoutX="42.0" layoutY="63.0" prefHeight="200.0" prefWidth="487.0" />
+      <JFXTextField fx:id="txtTextField" layoutX="32.0" layoutY="328.0" prefHeight="25.0" prefWidth="385.0" />
+      <JFXButton layoutX="448.0" layoutY="328.0" onAction="#sendOnAction" text="send" />
+   </children>
+</AnchorPane>
