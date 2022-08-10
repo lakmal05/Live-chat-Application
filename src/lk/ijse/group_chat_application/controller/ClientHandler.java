@@ -21,7 +21,7 @@ public class ClientHandler implements Runnable {
           clientHandlers.add(this);
           broadcastMassage(clientUsername+"joind");
         }catch (IOException e){
-            closeEverythig(socket,bufferedReader,bufferedWriter);
+            closeEverything(socket,bufferedReader,bufferedWriter);
         }
     }
 
@@ -33,9 +33,9 @@ public class ClientHandler implements Runnable {
  while(socket.isConnected()){
      try{
          massageFormClient=bufferedReader.readLine();
-         broadcastMassage(messageFormClient);
+         broadcastMassage(massageFormClient);
      }catch(IOException e){
-         cloaseEverything(socket,bufferedReader,bufferedWriter);
+         closeEverything(socket,bufferedReader,bufferedWriter);
          break;
      }
  }
@@ -57,7 +57,22 @@ public class ClientHandler implements Runnable {
     }
 
 public void removeClientHandler(){
-        
-}
+        clientHandlers.remove(this);
+        broadcastMassage("Server"+clientUsername+"left");
 
+}
+public void closeEverything(Socket socket, BufferedReader bufferedReader , BufferedWriter bufferedWriter){
+        removeClientHandler();
+        try{
+            if(bufferedReader !=null){
+                bufferedReader.close();
+            }if(bufferedWriter !=null){
+                bufferedWriter.close();
+            }if(socket !=null){
+                socket.close();
+            }
+        }catch (IOException e){
+
+        }
+}
 }
