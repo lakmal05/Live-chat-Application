@@ -18,7 +18,7 @@ public class ClientForm1 {
 
 public static void main(String args[]) throws IOException {
     Socket so=new Socket("localhost",8000);
-    ServerSocket ss =new ServerSocket(5000);
+    ServerSocket ss =new ServerSocket(2000);
     Socket sk =ss .accept();
     BufferedReader cin = new BufferedReader(new InputStreamReader(sk.getInputStream()));
     PrintStream cout= new PrintStream(sk.getOutputStream());
