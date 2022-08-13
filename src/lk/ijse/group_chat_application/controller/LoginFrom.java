@@ -13,7 +13,7 @@ public class LoginFrom {
 
     public JFXTextField txtUserName;
 
-    public String userName;
+    public static String userName;
 
 
 
