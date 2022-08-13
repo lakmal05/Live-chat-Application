@@ -9,13 +9,13 @@ import java.util.ArrayList;
 public class server {
 
 
-    private final ServerSocket serverSocket;
+ //   private final ServerSocket serverSocket;
     private  static ArrayList<ClientHandler>clientHandlers=new ArrayList<>();
 
 
 
     public static void main(String[] args) throws IOException {
-        ServerSocket serverSocket = new ServerSocket(1234);
+        ServerSocket serverSocket = new ServerSocket(8000);
         Socket accept;
 
         while(true){
@@ -24,9 +24,8 @@ public class server {
             System.out.println("new member coNECTD");
             ClientHandler clientHandler=new ClientHandler(accept,clientHandlers);
             clientHandlers.add(clientHandler);
-            //clientHandler.
-            Thread thread = new Thread(clientHandler);
-            thread.start();
+            clientHandler.start();
+
         }
 
       //  server server = new server(serverSocket);
@@ -37,7 +36,7 @@ public class server {
 
 
 /*------------------------------OUT-------------------------------*/
-    public  server(ServerSocket serverSocket) {
+   /* public  server(ServerSocket serverSocket) {
         this.serverSocket = serverSocket;
     }
 
@@ -72,7 +71,7 @@ public class server {
         }
 
 
-    }
+    }*/
 
 
 }

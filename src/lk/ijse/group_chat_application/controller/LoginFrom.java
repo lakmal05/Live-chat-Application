@@ -23,7 +23,7 @@ public class LoginFrom {
         Stage stage = (Stage) txtUserName.getScene().getWindow();
         stage.close();
         Stage stage1 = new Stage();
-        stage1.setScene(new Scene(FXMLLoader.load(getClass().getResource("/lk/ijse/group_chat_application/view/clientForm_1.fxml."))));
+        stage1.setScene(new Scene(FXMLLoader.load(getClass().getResource("/lk/ijse/group_chat_application/view/clientForm_1.fxml"))));
         stage1.setTitle("Online Chat ");
         stage1.setResizable(false);
         stage1.centerOnScreen();

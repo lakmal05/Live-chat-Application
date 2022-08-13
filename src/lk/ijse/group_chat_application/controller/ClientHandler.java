@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 
-public class ClientHandler implements Runnable {
+public class ClientHandler extends Thread {
 
     public static ArrayList<ClientHandler>clientHandlers;
    // public static ArrayList<ClientHandler>clientHandlers = new ArrayList<>();
@@ -18,42 +18,46 @@ public class ClientHandler implements Runnable {
         try{
            this.socket = socket;
            this.clientHandlers=clientHandlers;
-          this.bufferedWriter= new BufferedWriter( new OutputStreamWriter(socket.getOutputStream()));
+           this.bufferedReader= new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        //  this.bufferedWriter= new BufferedWriter( new OutputStreamWriter(socket.getOutputStream()));
           this.printWriter=new PrintWriter(socket.getOutputStream(),true);
           /*-----------------------out---------------------*/
-          this.bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+     /*     this.bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
           this.clientUsername =bufferedReader.readLine();
           clientHandlers.add(this);
-          broadcastMassage(clientUsername+"joind");
+          broadcastMassage(clientUsername+"joind");*/
 
         }catch (IOException e){
-            closeEverything(socket,bufferedReader,bufferedWriter);
+            e.printStackTrace();
+           // closeEverything(socket,bufferedReader,bufferedWriter);
         }
     }
 
 
-    @Override
+
     public void run() {
 
-        try {
+        try{
             String massage;
-            while ((massage=bufferedReader.readLine())!=null){
-                if(massage.equalsIgnoreCase("exit")){
+            while ((massage = bufferedReader.readLine()) != null) {
+                if(massage.equalsIgnoreCase("exit")) {
                     break;
                 }
-                for(ClientHandler c: clientHandlers){
+
+                for(ClientHandler c : clientHandlers) {
                     c.printWriter.println(massage);
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
         finally {
-            try{
+            try {
                 bufferedReader.close();
                 printWriter.close();
                 socket.close();
-            }catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -62,7 +66,7 @@ public class ClientHandler implements Runnable {
 
    /*---------------------OUT--------------------*/
 
-
+/*
  String massageFormClient;
 
  while(socket.isConnected()){
@@ -73,11 +77,11 @@ public class ClientHandler implements Runnable {
          closeEverything(socket,bufferedReader,bufferedWriter);
          break;
      }
- }
+ }*/
 
     }
 
-    public void broadcastMassage(String massageToSend){
+  /*  public void broadcastMassage(String massageToSend){
         for(ClientHandler clientHandler : clientHandlers){
             try{
                 if(!clientHandler.clientUsername.equals(clientUsername)){
@@ -89,8 +93,8 @@ public class ClientHandler implements Runnable {
                 closeEverything(socket,bufferedReader,bufferedWriter);
             }
         }
-    }
-
+    }*/
+/*
 public void removeClientHandler(){
         clientHandlers.remove(this);
         broadcastMassage("Server"+clientUsername+"left");
@@ -109,5 +113,5 @@ public void closeEverything(Socket socket, BufferedReader bufferedReader , Buffe
         }catch (IOException e){
 
         }
-}
+}*/
 }
