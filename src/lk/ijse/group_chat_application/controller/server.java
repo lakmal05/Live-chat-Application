@@ -4,21 +4,41 @@ package lk.ijse.group_chat_application.controller;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class server {
 
 
     private final ServerSocket serverSocket;
+    private  static ArrayList<ClientHandler>clientHandlers=new ArrayList<>();
 
 
-    public  server(ServerSocket serverSocket) {
-        this.serverSocket = serverSocket;
-    }
 
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = new ServerSocket(1234);
-        server server = new server(serverSocket);
-        server.startServer();
+        Socket accept;
+
+        while(true){
+            System.out.println("Weiting for client");
+            accept =serverSocket.accept();
+            System.out.println("new member coNECTD");
+            ClientHandler clientHandler=new ClientHandler(accept,clientHandlers);
+            clientHandlers.add(clientHandler);
+            //clientHandler.
+            Thread thread = new Thread(clientHandler);
+            thread.start();
+        }
+
+      //  server server = new server(serverSocket);
+      //  server.startServer();
+
+
+    }
+
+
+/*------------------------------OUT-------------------------------*/
+    public  server(ServerSocket serverSocket) {
+        this.serverSocket = serverSocket;
     }
 
     public void startServer() {
@@ -30,9 +50,9 @@ public class server {
                 socket = serverSocket.accept();
 
                 System.out.println("client has connectd");
-                ClientHandler clientHandler = new ClientHandler(socket);
-                Thread thread = new Thread(clientHandler);
-                thread.start();
+              //  ClientHandler clientHandler = new ClientHandler(socket);
+             //   Thread thread = new Thread(clientHandler);
+              //  thread.start();
 
             }
         } catch (IOException e) {
