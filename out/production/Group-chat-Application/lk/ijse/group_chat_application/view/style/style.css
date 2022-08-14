@@ -1,0 +1,71 @@
+
+/*-------------------Text Pain Part------------------*/
+
+.textPane{
+    -fx-background-color: white;
+    -fx-border-color: rgba(76, 73, 73, 0.83);
+    -fx-border-radius: 8px;
+}
+.textField{
+    -fx-background-color: white;
+    -fx-prompt-text-fill: #726d6d;
+    -fx-font-weight: bold;
+}
+.textLabel{
+    -fx-background-color:white ;
+    -fx-padding: 0 5px 0px 5px;
+    -fx-font-weight: bold;
+
+    -fx-text-fill: rgba(76, 73, 73, 0.83);;
+}
+/*---------------------------------------------------/**/
+/*----------------Insert Button---------------*/
+.Save {
+    -fx-background-color:  linear-gradient(to bottom, #009999 1%, #00cc99 100%);
+    -fx-background-radius: 9 9 9 9;
+}
+
+.Save:hover {
+    -fx-background-color: linear-gradient(to bottom, #009999 1%, #00ff00 100%);
+    -fx-background-radius: 9 9 9 9;
+}
+
+.Save:pressed {
+    -fx-background-color: linear-gradient(to bottom, #009999 1%, #00cc99 100%);
+    -fx-background-radius: 9 9 9 9;
+}
+
+
+/*----------------Update Button---------------*/
+.update {
+    -fx-background-color:   linear-gradient(to bottom, #0000ff 1%, #0066ff 100%);
+    -fx-background-radius: 9 9 9 9;
+}
+
+.update:hover {
+    -fx-background-color: linear-gradient(to bottom, #33ccff 1%, #ccffff 100%);
+    -fx-background-radius: 9 9 9 9;
+}
+
+.update:pressed {
+    -fx-background-color:linear-gradient(to bottom, #0000ff 1%, #0066ff 100%);
+    -fx-background-radius: 9 9 9 9;
+}
+
+
+/*---------btn Clear--------------*/
+
+.Clear {
+    -fx-background-color:    #2f3542;
+    -fx-background-radius: 9 9 9 9;
+}
+
+.Clear:hover {
+    -fx-background-color: linear-gradient(to top, #2d3436 0%, #b2bec3 100%);
+    -fx-background-radius: 9 9 9 9;
+}
+
+.Clear:pressed {
+    -fx-background-color: #2f3542;
+    -fx-background-radius: 9 9 9 9;
+}

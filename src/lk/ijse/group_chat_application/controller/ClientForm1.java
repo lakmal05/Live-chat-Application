@@ -144,6 +144,8 @@ public class ClientForm1 extends Thread {
         printWriter.flush();
         if (massage.equalsIgnoreCase("exit")) {
             Stage stage = (Stage) txtTextField.getScene().getWindow();
+
+
             stage.close();
         }
 
